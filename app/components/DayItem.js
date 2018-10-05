@@ -1,7 +1,7 @@
 import React from 'react';
 import {getDate} from "../utils/helper";
 
-export function DayItem(props) {
+export default function DayItem(props) {
   const date = getDate(props.day.dt);
   const icon = props.day.weather[0].icon;
 

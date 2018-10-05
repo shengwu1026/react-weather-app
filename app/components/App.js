@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
 import ZipCode from './ZipCode';
 import Forecast from './Forecast';
 import Detail from './Detail';
-import {BrowserRouter, Route} from 'react-router-dom';
 
 export default class App extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class App extends Component {
           <Route render={(props) => {
             return (
               <div className='navbar'>
-                <h1>Clever Title</h1>
+                <h1>Weather Forecast (5 Days Later)</h1>
                 <ZipCode
                   direction='row'
                   onSubmitZipcode={(city) => {
@@ -21,7 +21,6 @@ export default class App extends Component {
                       search: '?city=' + city
                     })
                   }}
-                  zipcode={123}
                 />
               </div>
             )
@@ -40,7 +39,6 @@ export default class App extends Component {
                       search: '?city=' + city
                     })
                   }}
-                  zipcode={123}
                 />
               </div>
             )

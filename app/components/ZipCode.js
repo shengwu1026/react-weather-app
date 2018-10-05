@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 class ZipCode extends Component {
   state = {
@@ -7,21 +6,23 @@ class ZipCode extends Component {
   };
 
   handleSubmitZipcode = () => {
+    console.log(this.state.zipcode);
     this.props.onSubmitZipcode(this.state.zipcode);
     this.setState(() => ({zipcode: ''}))
   };
 
   handleUpdateZipcode = (e) => {
-    this.setState(() => ({zipcode: e}))
+    e.persist();
+    this.setState(() => ({zipcode: e.target.value}))
   };
 
   render() {
     return (
-      <div className='zipCode-container' style={{flexDirection: this.props.direction}}>
+      <div className='zipCode-container' style={{flexDirection: this.props.direction, display: 'flex'}}>
         <input
           className='form-control'
           onChange={this.handleUpdateZipcode}
-          placeholder='St. George, Utah'
+          placeholder='Melbourne, AU'
           type='text'
           value={this.state.zipcode}
         />
@@ -38,13 +39,5 @@ class ZipCode extends Component {
     )
   }
 }
-
-ZipCode.propTypes = {
-  direction: PropTypes.string
-};
-
-ZipCode.defaultProps = {
-  direction: 'column'
-};
 
 export default ZipCode
